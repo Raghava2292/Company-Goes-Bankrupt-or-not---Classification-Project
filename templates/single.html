@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Single Prediction</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body style="background-color: black">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:tomato">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Bankrupt or Not!</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/single">Single Prediction</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/multi">Dataset Prediction</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="description"  style="background-color: tomato; margin:0; padding: 20px; color:white">
+        <h1 class="display-3 text-center">Single Prediction</h1>
+    </div>
+    <div class="container" style="margin-top:20px;color:white">
+        <h3 class="display-4" style="font-size:25px">Enter the values in the input fields below:</h3>
+    </div>
+    <div class="container" style="border-style:solid;border-color:white;border-radius:10px;padding:20px">
+        <form action="/single_pred" method="post">
+            <div class="row">
+                <div class="col">
+                    <label for="ind" style="color:white">Select the Industrial Risk Parameter</label>
+
+                    <input type="range" class="form-range" min="0" max="1" step="0.5" id="ind" name="ind" value="0" oninput="indnum.value = this.value">
+                    <h6 class="text-center" style="color:white">Selected Value: <output id="indnum">0</output></h6>
+                    <br>
+                    <label for="man" style="color:white">Select the Management Risk Parameter</label>
+
+                    <input type="range" class="form-range" min="0" max="1" step="0.5" id="man" name="man" value="0" oninput="mannum.value = this.value">
+                    <h6 class="text-center" style="color:white">Selected Value: <output id="mannum">0</output></h6>
+                    <br>
+
+                    <label for="man" style="color:white">Select the Operating Risk Parameter</label>
+
+                    <input type="range" class="form-range" min="0" max="1" step="0.5" id="ope" name="ope" value="0" oninput="openum.value = this.value">
+                    <h6 class="text-center" style="color:white">Selected Value: <output id="openum">0</output></h6>
+                    <br>
+
+
+                </div>
+                <div class="col">
+                    <label for="ind" style="color:white">Select the Financial Flexibility Parameter</label>
+
+                    <input type="range" class="form-range" min="0" max="1" step="0.5" id="fin" name="fin" value="0" oninput="finnum.value = this.value">
+                    <h6 class="text-center" style="color:white">Selected Value: <output id="finnum">0</output></h6>
+                    <br>
+                    <label for="man" style="color:white">Select the Credibility Parameter</label>
+
+                    <input type="range" class="form-range" min="0" max="1" step="0.5" id="cre" name="cre" value="0" oninput="crenum.value = this.value">
+                    <h6 class="text-center" style="color:white">Selected Value: <output id="crenum">0</output></h6>
+                    <br>
+
+                    <label for="man" style="color:white">Select the Competitiveness Parameter</label>
+
+                    <input type="range" class="form-range" min="0" max="1" step="0.5" id="com" name="com" value="0" oninput="comnum.value = this.value">
+                    <h6 class="text-center" style="color:white">Selected Value: <output id="comnum">0</output></h6>
+                    <br>
+
+                </div>
+            </div>
+
+
+
+            <div class="container" style="margin-top:20px;color:white">
+                <h3 class="display-4" style="font-size:25px">Select the Classifier:</h3>
+            </div>
+            <select name="model" id="model" class="form-select form-select-lg mb-3">
+                <option value="ada">AdaBoost Classifier - 100% Score</option>
+                <option value="random">Random Forest Classifier - 100% Score</option>
+                <option value="decision">Decision Tree Classifier - 100% Score</option>
+                <option value="bag">Bagging Classifier - 100% Score</option>
+                <option value="grad">Gradient Boost Classifier - 100% Score</option>
+                <option value="stack">Stacking Classifier - 100% Score</option>
+                <option value="knn">KNN Classifier - 100% Score</option>
+                <option value="log">Logistic Regressor - 99.651% Score</option>
+                <option value="nn">Neural Networks - 100% Score</option>
+                <option value="rbf">Support Vector - RBF Kernel - 100% Score</option>
+                <option value="poly">Support Vector - Polynomial Kernel - 100% Score</option>
+                <option value="linear">Support Vector - Linear Kernel - 99.651% Score</option>
+            </select>
+            <br>
+            <div class="container" style="margin-top:20px;color:white">
+                <h3 class="display-4" style="font-size:25px">Make Prediction:</h3>
+            </div>
+            <div class="container d-grid gap-2 col-6 mx-auto" style="margin-bottom:20px">
+                <input name="predict" type="submit" value="Predict" class="btn btn-lg btn-outline-warning">
+            </div>
+
+        </form>
+    </div>
+
+
+
+    {% if data %}
+        <div class="container" style="margin-top:20px;border-style:solid;border-color:white;border-radius:10px;padding:20px;color:white">
+            <div class="text-center">
+                <p>Selected Classifier :
+                  <span class="op">{{data['name']}}</span>
+                </p>
+                <br>
+                <table class="table" style="color:white">
+                    <thead>
+                        <tr>
+                            <th>Industrial Risk</th>
+                            <th>Management Risk</th>
+                            <th>Operating Risk</th>
+                            <th>Financial Flexibility</th>
+                            <th>Credibility</th>
+                            <th>Competitiveness</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{data['Industrial Risk']}}</td>
+                            <td>{{data['Management Risk']}}</td>
+                            <td>{{data['Operating Risk']}}</td>
+                            <td>{{data['Financial Flexibility']}}</td>
+                            <td>{{data['Credibility']}}</td>
+                            <td>{{data['Competitiveness']}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <br>
+                {% if data['prediction'] == 1 %}
+                    <p>The Company <h3>will not go Bankrupt</h3></p>
+                {% elif data['prediction'] == 0 %}
+                    <p>The Company <h3>will go Bankrupt</h3></p>
+                {% endif %}
+            </div>
+
+        </div>
+<!--    {% else %}-->
+<!--        <h4>Enter the values</h4>-->
+    {% endif %}
+
+
+</body>
+
+</html>
